@@ -8,8 +8,8 @@ module.exports = app => {
     app.db('tasks')
       .where({ userId: req.user.id })
       .where('estimateAt', '<=', date)
-      .order('estimateAt')
-      .then(tasks => res.json(tasks))
+      .orderBy('estimateAt')
+      .then(tasks => res.status(200).json(tasks))
       .catch(err => res.status(400).json(err));
   };
 
